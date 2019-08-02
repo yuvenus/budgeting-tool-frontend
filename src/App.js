@@ -1,24 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
+import BudgetTable from './budget-table/budget-table'
 import './App.css';
 
 function App() {
+  const mockData = [{
+    to: 'chipotle',
+    amount: '10.59',
+    method: 'credit', // make into an enum probably
+    date: '10/10/10',
+    source: 'me' // also make into an enum
+  }];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BudgetTable data={mockData}></BudgetTable>
     </div>
   );
 }
