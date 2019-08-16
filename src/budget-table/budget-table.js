@@ -1,8 +1,15 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
+import BudgetForm from './budget-form';
 import { paymentMethods, paymentSources } from '../enums';
+import {Sidebar} from 'primereact/sidebar';
+
 
 class BudgetTable extends React.Component {
+  state = {
+    viewSidebar: false
+  }
+
   parseMethod(method) {
     return Object.keys(paymentMethods)
     .find(f => paymentMethods[f] == method);
@@ -16,6 +23,18 @@ class BudgetTable extends React.Component {
   parseTime(time) {
     const date = new Date(time);
     return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}` 
+  }
+
+  toggleSidebar = () => {
+    this.setState({
+      viewSidebar: !this.state.viewSidebar
+    });
+  }
+
+  onHide = () => {
+    this.setState({
+      viewSidebar: false
+    });
   }
 
   render() {
@@ -32,20 +51,28 @@ class BudgetTable extends React.Component {
     )
 
     return (
-      <Table responsive>
-        <thead>
-          <tr>
-            <th>Paid To</th>
-            <th>Amount</th>
-            <th>Method</th>
-            <th>Date</th>
-            <th>Source</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows}
-        </tbody>
-      </Table>
+      <div>
+        <button onClick={this.toggleSidebar}>show sidebar?</button>
+
+        <Sidebar visible={this.state.viewSidebar} onHide={this.onHide}>
+          <BudgetForm></BudgetForm>
+        </Sidebar>
+      
+        <Table responsive>
+          <thead>
+            <tr>
+              <th>Paid To</th>
+              <th>Amount</th>
+              <th>Method</th>
+              <th>Date</th>
+              <th>Source</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows}
+          </tbody>
+        </Table>
+      </div>
     )
   }
 }

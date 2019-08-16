@@ -7,10 +7,14 @@ class App extends Component {
   state = {
     data: []
   }
+
+  getNewData() {
+    fetch("http://localhost:5000", { method: "GET" })
+    .then(response => response.json())
+    .then(dataFromBackend => this.setState({ data: dataFromBackend }))
+  }
  
   removeRowFromData = index => {
-    console.log(index);
-
     fetch(`http://localhost:5000/${index}`, { method: "DELETE" })
       .then(r => {
         if (r.status === 200) {
@@ -25,14 +29,17 @@ class App extends Component {
       .catch(e => console.log("error", e))
   }
 
+  addNewRow() {
+    fetch(`http://localhost:5000`, {method: "POST"})
+      .then(r => r.json())
+      .then(r => r.getNewData())
+  }
+
   componentDidMount() {
-    fetch("http://localhost:5000", { method: "GET" })
-      .then(response => response.json())
-      .then(dataFromBackend => this.setState({ data: dataFromBackend }))
+    this.getNewData();
   }
 
   render() {
-  
     return (
       <div className="App">
         <div className="nav" style={{margin: "15px"}}>
@@ -42,7 +49,10 @@ class App extends Component {
         </div>
 
         <Switch>
-          <Route exact path="/" render={() => <BudgetTable data={this.state.data} removeRowFromData={this.removeRowFromData}></BudgetTable>}/>
+          <Route exact path="/" render={() => 
+            <BudgetTable data={this.state.data} 
+                         removeRowFromData={this.removeRowFromData}
+                         addNewRow={this.addNewRow}></BudgetTable>}/>
           <Route exact path="/fuck" render={() => <div style={{textAlign: "center", color: "red", fontSize: "50px"}}>nuts!</div>}/>
           <Route render={() => <div>You're lost!</div>}/>
         </Switch>
