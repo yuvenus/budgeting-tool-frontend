@@ -24,6 +24,14 @@ class BudgetForm extends React.Component {
                 <Form.Label><b>Method</b></Form.Label>
                 <Form.Control type="text" placeholder="credit" required></Form.Control>
             </Form.Group>
+            <Form.Group controlId="date">
+                <Form.Label><b>Date</b></Form.Label>
+                <Form.Control type="text" placeholder="8/19/2019" required></Form.Control>
+            </Form.Group>
+            <Form.Group controlId="source">
+                <Form.Label><b>Source</b></Form.Label>
+                <Form.Control type="text" placeholder="me" required></Form.Control>
+            </Form.Group>
           </Form.Row>
       </Form>
     )
