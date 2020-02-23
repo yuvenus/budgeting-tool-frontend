@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/budgeting-tool/static/css/main.6095238a.chunk.css",
+    "main.js": "/budgeting-tool/static/js/main.c9bc5ff6.chunk.js",
+    "main.js.map": "/budgeting-tool/static/js/main.c9bc5ff6.chunk.js.map",
+    "runtime-main.js": "/budgeting-tool/static/js/runtime-main.ad42ac2f.js",
+    "runtime-main.js.map": "/budgeting-tool/static/js/runtime-main.ad42ac2f.js.map",
+    "static/css/2.f378c67c.chunk.css": "/budgeting-tool/static/css/2.f378c67c.chunk.css",
+    "static/js/2.661fff4e.chunk.js": "/budgeting-tool/static/js/2.661fff4e.chunk.js",
+    "static/js/2.661fff4e.chunk.js.map": "/budgeting-tool/static/js/2.661fff4e.chunk.js.map",
+    "index.html": "/budgeting-tool/index.html",
+    "precache-manifest.ff4cdd65089a1f4dbaa483c44a6c59f1.js": "/budgeting-tool/precache-manifest.ff4cdd65089a1f4dbaa483c44a6c59f1.js",
+    "service-worker.js": "/budgeting-tool/service-worker.js",
+    "static/css/2.f378c67c.chunk.css.map": "/budgeting-tool/static/css/2.f378c67c.chunk.css.map",
+    "static/css/main.6095238a.chunk.css.map": "/budgeting-tool/static/css/main.6095238a.chunk.css.map",
+    "static/js/2.661fff4e.chunk.js.LICENSE.txt": "/budgeting-tool/static/js/2.661fff4e.chunk.js.LICENSE.txt",
+    "static/media/primereact.min.css": "/budgeting-tool/static/media/line.567f5738.gif",
+    "static/media/theme.css": "/budgeting-tool/static/media/open-sans-v15-latin-regular.cffb686d.woff2",
+    "static/media/primeicons.css": "/budgeting-tool/static/media/primeicons.e5e0e944.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ad42ac2f.js",
+    "static/css/2.f378c67c.chunk.css",
+    "static/js/2.661fff4e.chunk.js",
+    "static/css/main.6095238a.chunk.css",
+    "static/js/main.c9bc5ff6.chunk.js"
+  ]
+}
