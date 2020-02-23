@@ -71,18 +71,23 @@ class BudgetTable extends React.Component {
   render() {
     const rows = this.props.data.map((m) => (
       <tr key={m.id}>
-        <td>{m.paidTo}</td>
+        <td>
+          <div className="info">
+            <span className="headline">{m.paidTo}</span>
+            <span className="subline">{m.description}</span>
+          </div>  
+        </td>
         <td>${m.amount}</td>
         <td>{this.parseMethod(m.method)}</td>
         <td>{this.parseTime(m.date)}</td>
         <td>{this.parseSource(m.source)}</td>
-        <td><button className="edit-button" onClick={() => this.toggleSidebar(m, true)}><FontAwesomeIcon icon={faEdit} /></button></td>
+        <td><button className="button table-button" onClick={() => this.toggleSidebar(m, true)}><FontAwesomeIcon icon={faEdit} /></button></td>
       </tr>
     ));
 
     return (
       <div className="budget-table-wrapper"> 
-        <button className="add-row-button" onClick={() => this.toggleSidebar(this.newRow, false)}>Add New Row</button>
+        <button className="button add" onClick={() => this.toggleSidebar(this.newRow, false)}>Add New Row</button>
 
         <Sidebar visible={this.state.viewSidebar} onHide={this.onHide}>
           <div className="sidebar">
@@ -90,7 +95,7 @@ class BudgetTable extends React.Component {
               <BudgetForm tableAddNewRow={this.tableAddNewRow} row={this.state.curRow} onChildChange={(name, value) => this.onChildChange(name, value)}></BudgetForm>
             </div>
             <div className="sidebar-buttons">
-              <button onClick={this.saveClicked}>save :)</button>
+              <button className="button" onClick={this.saveClicked}>Save</button>
             </div>
           </div>
         </Sidebar>

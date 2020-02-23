@@ -11,8 +11,32 @@ body {
   margin: 0px;
 }
 
-form 
-  {.form-row {
+button {
+  border: none;
+  color: white;
+  background-color: darkgreen;
+  padding: 5px 10px;
+
+  &.button {
+    border-radius: 3px;
+
+    &.add {
+      margin-bottom: 15px;
+    }
+
+    &.table-button {
+      color: black;
+      background-color: transparent;
+      padding: 0;
+      &:hover {
+        color: darkgray;
+      }
+    }
+  }
+}
+
+form {
+    .form-row {
     margin: 20px !important;
 
     .form-group {
@@ -37,15 +61,27 @@ form
 .budget-table-wrapper {
   margin: 20px;
 
-  .add-row-button {
-    margin-bottom: 15px;
-  }
-
   .budget-table {
-    border: solid 1px $table-border;
+    .table {
+      border: solid 1px $table-border;
+    }
 
     td {
       text-transform: capitalize;
+      
+      .info {
+        display: flex;
+        flex-direction: column;
+        
+        .headline, .subline {
+          text-transform: none;
+        }
+
+        .subline {
+          font-size: 13px;
+          color: darkgray;
+        }
+      }
     }
   }
 }

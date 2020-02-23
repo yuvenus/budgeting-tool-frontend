@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BudgetTable from './budget-table/budget-table'
+import './styles/styles.scss';
 import { rows } from './sample';
 import { Route, Link, Switch } from 'react-router-dom'
 import './App.css';
