@@ -1,5 +1,6 @@
 {
   "name": "budgeting-tool-frontend",
+  "homepage": "http://yuvenus.github.io/budgeting-tool",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -22,6 +23,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -42,6 +44,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^2.2.0",
     "redux-devtools": "^3.5.0"
   }
 }
