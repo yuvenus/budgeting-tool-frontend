@@ -3,11 +3,28 @@ import Table from "react-bootstrap/Table";
 import BudgetForm from "./budget-form";
 import { paymentMethods, paymentSources } from "../enums";
 import { Sidebar } from "primereact/sidebar";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit } from '@fortawesome/free-solid-svg-icons'
 
 class BudgetTable extends React.Component {
+  
+  newRow = {
+    paidTo: '',
+    description: '',
+    amount: '',
+    method: paymentMethods.credit,
+    date: '',
+    source: paymentSources.self
+  }
+
   state = {
-    viewSidebar: false
+    viewSidebar: false,
+    curRow: this.newRow
   };
+
+  tableAddNewRow(row) {
+    this.props.addNewRow(row);
+  }
 
   parseMethod(method) {
     return Object.keys(paymentMethods).find(f => paymentMethods[f] == method);
@@ -22,40 +39,58 @@ class BudgetTable extends React.Component {
     return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
   }
 
-  toggleSidebar = () => {
+  toggleSidebar = (row, isEdit) => {
     this.setState({
-      viewSidebar: !this.state.viewSidebar
+      viewSidebar: !this.state.viewSidebar,
+      edit: isEdit,
+      curRow: JSON.parse(JSON.stringify(row)),
     });
   };
+
+  onChildChange = (name, value) => {
+    this.setState({    
+      viewSidebar: this.state.viewSidebar,
+      edit: this.state.edit,
+      curRow: {...this.state.curRow, [`${name}`]: value}
+    });
+  }
 
   onHide = () => {
     this.setState({
-      viewSidebar: false
+      viewSidebar: false,
+      edit: false,
+      curRow: this.newRow
     });
   };
 
+  saveClicked = () => {
+    this.state.edit ? this.props.editRow(JSON.parse(JSON.stringify(this.state.curRow))) : this.props.addNewRow(JSON.parse(JSON.stringify(this.state.curRow)));
+    this.onHide();
+  }
+
   render() {
-    const rows = this.props.data.map((m, i) => (
-      <tr key={i}>
+    const rows = this.props.data.map((m) => (
+      <tr key={m.id}>
         <td>{m.paidTo}</td>
-        <td>{m.amount}</td>
+        <td>${m.amount}</td>
         <td>{this.parseMethod(m.method)}</td>
         <td>{this.parseTime(m.date)}</td>
         <td>{this.parseSource(m.source)}</td>
+        <td><button className="edit-button" onClick={() => this.toggleSidebar(m, true)}><FontAwesomeIcon icon={faEdit} /></button></td>
       </tr>
     ));
 
     return (
-      <div>
-        <button onClick={this.toggleSidebar}>show sidebar?</button>
+      <div className="budget-table-wrapper"> 
+        <button className="add-row-button" onClick={() => this.toggleSidebar(this.newRow, false)}>Add New Row</button>
 
         <Sidebar visible={this.state.viewSidebar} onHide={this.onHide}>
           <div className="sidebar">
             <div className="sidebar-content">
-              <BudgetForm></BudgetForm>
+              <BudgetForm tableAddNewRow={this.tableAddNewRow} row={this.state.curRow} onChildChange={(name, value) => this.onChildChange(name, value)}></BudgetForm>
             </div>
             <div className="sidebar-buttons">
-              <button>save :)</button>
+              <button onClick={this.saveClicked}>save :)</button>
             </div>
           </div>
         </Sidebar>
@@ -69,6 +104,7 @@ class BudgetTable extends React.Component {
                 <th>Method</th>
                 <th>Date</th>
                 <th>Source</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>{rows}</tbody>

@@ -1,0 +1,25 @@
+import { paymentMethods, paymentSources } from "./enums";
+
+export const rows = [
+    { id: 1,
+      paidTo: 'Spotify',
+      description: 'subscription',
+      amount: '10.65',
+      method: paymentMethods.credit,
+      source: paymentSources.self,
+      date: '2/17/2020'},
+    { id: 2,
+      paidTo: 'A C Moore',
+      description: 'yarn!!!',
+      amount: '43.78',
+      method: paymentMethods.credit,
+      source: paymentSources.self,
+      date: '2/13/2020'}, 
+    { id: 3,
+      paidTo: 'Exxon',
+      description: 'GAS',
+      amount: '34.67',
+      method: paymentMethods.credit,
+      source: paymentSources.dad,
+      date: '2/14/2020'},   
+]

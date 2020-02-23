@@ -6,7 +6,6 @@ import "primereact/resources/themes/nova-light/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import { BrowserRouter } from "react-router-dom";
-import "./styles/styles.scss";
 
 ReactDOM.render(
   <BrowserRouter>

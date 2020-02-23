@@ -11,8 +11,14 @@ body {
   margin: 0px;
 }
 
-.form-row {
-  margin: 20px !important;
+form 
+  {.form-row {
+    margin: 20px !important;
+
+    .form-group {
+      width: 100%;
+    }
+  }
 }
 
 .sidebar {
@@ -28,7 +34,18 @@ body {
   }
 }
 
-.budget-table {
-  margin: 2rem;
-  border: solid 1px $table-border;
+.budget-table-wrapper {
+  margin: 20px;
+
+  .add-row-button {
+    margin-bottom: 15px;
+  }
+
+  .budget-table {
+    border: solid 1px $table-border;
+
+    td {
+      text-transform: capitalize;
+    }
+  }
 }
