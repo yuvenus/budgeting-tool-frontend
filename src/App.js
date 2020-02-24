@@ -63,15 +63,17 @@ class App extends Component {
           <Link to="/">
             Home
           </Link>
-        </div> */}
+        </div> 
 
         <Switch>
           <Route exact path="/" render={() => 
-            <BudgetTable data={this.state.data}
-                         addNewRow={this.addNewRow}
-                         editRow={this.editRow}></BudgetTable>}/>
+            
           <Route render={() => <div>You're lost!</div>}/>
-        </Switch>
+        </Switch>*/
+
+        <BudgetTable data={this.state.data}
+                         addNewRow={this.addNewRow}
+                         editRow={this.editRow}></BudgetTable>}
       </div>
     );
   }

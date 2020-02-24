@@ -1,6 +1,6 @@
 {
   "name": "budgeting-tool-frontend",
-  "homepage": "http://yuvenus.github.io/budgeting-tool",
+  "homepage": "http://yuvenus.github.io/budgeting-tool-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
